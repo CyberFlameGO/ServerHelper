@@ -15,6 +15,7 @@ public class CommandLogic implements CommandExecutor
 
 	private final Map<String, ICommand> commands;
 
+	// The plugin's plugin-specific (serverhelper:<command>) commands don't work, but I don't mind.
 	public CommandLogic() {
 		commands = new HashMap<>();
 		registerCommand(new GCTriggerCommand(), "triggergc", "garbagecollect", "gc");

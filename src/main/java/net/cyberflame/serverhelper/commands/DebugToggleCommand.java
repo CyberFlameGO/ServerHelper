@@ -17,8 +17,8 @@ public class DebugToggleCommand implements ICommand
 	public void execute(Player player, String[] args)
 	{
 		final String permission = "serverhelper.debug";
-		String bypassToggleOn = getInstance().getConfig().getString("messages.bypass_toggle_on");
-		String bypassToggleOff = getInstance().getConfig().getString("messages.bypass_toggle_off");
+		String alertsToggleOn = getInstance().getConfig().getString("messages.alerts_toggle_on");
+		String alertsToggleOff = getInstance().getConfig().getString("messages.alerts_toggle_off");
 		if (! player.hasPermission(permission))
 			{
 				String noPermission = getInstance().getConfig().getString("messages.no_permission");
@@ -33,23 +33,24 @@ public class DebugToggleCommand implements ICommand
 						Player target = Bukkit.getPlayer(args[0]);
 						String targetName = Objects.requireNonNull(Bukkit.getPlayer(args[0])).getName();
 						instance.setReceivingDebug(Objects.requireNonNull(Bukkit.getPlayer(args[0])).getUniqueId());
-						String bypassOtherToggleOn =
-								getInstance().getConfig().getString("messages.bypass_other_toggle_on");
-						String bypassOtherToggleOff =
-								getInstance().getConfig().getString("messages" + ".bypass_other_toggle_off");
+						String alertsOtherToggleOn =
+								getInstance().getConfig().getString("messages.alerts_toggle_on_other");
+						String alertsOtherToggleOff =
+								getInstance().getConfig().getString("messages.alerts_toggle_off_other");
 						assert target != null;
 						player.sendMessage(ChatColor.translateAlternateColorCodes('&', (instance.getReceivingDebug(
-								target.getUniqueId()) ? Objects.requireNonNull(bypassOtherToggleOn)
+								target.getUniqueId()) ? Objects.requireNonNull(alertsOtherToggleOn)
 						                                       .replaceAll("%player%", targetName) : Objects
-								.requireNonNull(bypassOtherToggleOff).replaceAll("%player%", targetName))));
+								.requireNonNull(alertsOtherToggleOff).replaceAll("%player%", targetName))));
 						player.sendMessage(ChatColor.translateAlternateColorCodes('&', (instance.getReceivingDebug(
-								target.getUniqueId()) ? Objects.requireNonNull(bypassToggleOn)
+								target.getUniqueId()) ? Objects.requireNonNull(alertsToggleOn)
 						                                       .replaceAll("%player%", targetName) : Objects
-								.requireNonNull(bypassToggleOff).replaceAll("%player%", targetName))));
+								.requireNonNull(alertsToggleOff).replaceAll("%player%", targetName))));
 					}
 				else
 					{
 						String unknownPlayer = getInstance().getConfig().getString("messages.unknown_player");
+						assert unknownPlayer != null;
 						player.sendMessage(ChatColor.translateAlternateColorCodes('&',
 						                                                          Objects.requireNonNull(unknownPlayer)
 						                                                                 .replaceAll("%player%",
@@ -60,10 +61,10 @@ public class DebugToggleCommand implements ICommand
 		instance.setReceivingDebug(player.getUniqueId());
 		player.sendMessage(ChatColor.translateAlternateColorCodes('&',
 		                                                          (instance.getReceivingDebug(player.getUniqueId()) ?
-				                                                           Objects.requireNonNull(bypassToggleOn)
+				                                                           Objects.requireNonNull(alertsToggleOn)
 				                                                                  .replaceAll("%player%",
 				                                                                              player.getName()) :
-				                                                           Objects.requireNonNull(bypassToggleOff)
+				                                                           Objects.requireNonNull(alertsToggleOff)
 				                                                                  .replaceAll("%player%",
 				                                                                              player.getName()))));
 	}

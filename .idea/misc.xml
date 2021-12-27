@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="EntryPointsManager">
+    <pattern value="net.cyberflame.serverhelper.commands.GCTriggerCommand" />
+    <pattern value="net.cyberflame.serverhelper.commands.DebugToggleCommand" />
+    <pattern value="net.cyberflame.serverhelper.commands.CommandLogic" method="CommandLogic" />
+    <pattern value="net.cyberflame.serverhelper.commands.RootCommand" />
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">

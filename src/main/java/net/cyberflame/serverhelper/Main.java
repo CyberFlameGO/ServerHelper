@@ -25,7 +25,7 @@ public class Main extends JavaPlugin
         saveConfig();
         Main.instance = this;
         receivingDebug = new HashSet<>();
-        getLogger().info("ServerHelper is enabled!");
+        registerListeners();
 
         CommandLogic executor = new CommandLogic();
 
