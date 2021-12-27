@@ -1,0 +1,25 @@
+name: ServerHelper
+main: net.cyberflame.serverhelper.Main
+version: ${project.version}
+description: Utilities for the NCEA Help Minecraft server
+website: https://cyberfla.me/
+author: CyberFlame (Aaron)
+api-version: 1.18
+load: STARTUP
+commands:
+  triggergc:
+    aliases: [garbagecollect, gc]
+    description: "Runs the garbage collector"
+    permission: serverhelper.gc
+  toggledebug:
+    aliases: [debugalerts, debugnotifications, debugalertstoggle, dat]
+    description: "Toggles debug mode"
+    permission: serverhelper.debug
+
+permissions:
+  serverhelper.gc:
+    description: "Allows the user to run the garbage collector"
+    default: op
+  serverhelper.debug:
+    description: "Allows the user to toggle debug mode"
+    default: op
