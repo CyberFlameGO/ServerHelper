@@ -48,6 +48,7 @@
         <url>https://github.com/CyberFlameGO/ServerHelper/</url>
     </scm>
 
+<!-- TODO: Fix overlapping resource and class -->
     <build>
         <defaultGoal>clean install</defaultGoal>
         <finalName>${project.name}</finalName>
