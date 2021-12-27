@@ -12,7 +12,9 @@ import static net.cyberflame.serverhelper.Main.getInstance;
 public class DebugToggleCommand implements ICommand
 {
 	private final Main instance = Main.getInstance();
-
+// TODO: Fix toggling debug alerts for someone else, also toggling them for yourself. (/dat Owner_of_Mojang
+// toggles my username's toggle status twice, and with another person e.g. Glacioo it toggles both mine and
+// Glacioo's simultaneously).
 	@Override
 	public void execute(Player player, String[] args)
 	{
