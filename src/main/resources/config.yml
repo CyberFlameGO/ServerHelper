@@ -1,8 +1,8 @@
 messages:
-  gc: "&eGC ran successfully"
+  gc: "&7System.gc() &atriggered successfully &e(manually executed by command)"
   unknown_player: "&cError: No player matching &e%player% &cis connected to this server."
   no_permission: "&cError: You do not have permission to use this command."
-  alerts_toggle_on: "&eYou &aenabled &ereceiving debug alerts for &6yourself&e."
-  alerts_toggle_off: "&eYou &cdisabled &ereceiving debug alerts for &6yourself&e."
+  alerts_toggle_on: "&eReceiving debug alerts for &6yourself &ehas been toggled to &aenabled."
+  alerts_toggle_off: "&eReceiving debug alerts for &6yourself &ehas been toggled to &cdisabled."
   alerts_toggle_on_other: "&eYou &aenabled &edebug alerts for &6%player%&e."
   alerts_toggle_off_other: "&eYou &cdisabled &edebug alerts for &6%player%&e."

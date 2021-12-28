@@ -1,6 +1,7 @@
 package net.cyberflame.serverhelper;
 
 import net.cyberflame.serverhelper.commands.CommandLogic;
+import net.cyberflame.serverhelper.commands.RootCommand;
 import net.cyberflame.serverhelper.listeners.tempname;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
@@ -39,6 +40,7 @@ public class Main extends JavaPlugin
             };
         Objects.requireNonNull(getCommand("triggergc")).setExecutor(commandExecutor);
         Objects.requireNonNull(getCommand("toggledebug")).setExecutor(commandExecutor);
+        Objects.requireNonNull(getCommand("serverhelper")).setExecutor(new RootCommand());
     }
 
     private void registerListeners()

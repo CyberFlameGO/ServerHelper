@@ -10,6 +10,8 @@ import static net.kyori.adventure.text.Component.text;
 
 public class Utils
 {
+	// If I need to use more components than just text, I'll make this method accept "Component..." or whatever the
+	// actual name of it is, so it can accept multiple components.
 	@SuppressWarnings("UnnecessaryLocalVariable")
 	public static Component component(String string)
 	{

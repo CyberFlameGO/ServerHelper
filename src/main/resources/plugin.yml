@@ -12,9 +12,13 @@ commands:
     description: "Runs the garbage collector"
     permission: serverhelper.gc
   toggledebug:
-    aliases: [debugalerts, debugnotifications, debugalertstoggle, dat]
+    aliases: [debugalerts, debugnotifications, debugalertstoggle, dat, notify, alerts, notifications]
     description: "Toggles debug mode"
     permission: serverhelper.debug
+  serverhelper:
+    aliases: [sh]
+    description: "Prints plugin information, and is the root command for subcommands"
+    permission: serverhelper.main
 
 permissions:
   serverhelper.gc:
@@ -22,4 +26,10 @@ permissions:
     default: op
   serverhelper.debug:
     description: "Allows the user to toggle debug mode"
+    default: op
+  serverhelper.main:
+    description: "Allows the user to run the main command"
+    default: true
+  serverhelper.reload:
+    description: "Allows the user to run the reload subcommand"
     default: op

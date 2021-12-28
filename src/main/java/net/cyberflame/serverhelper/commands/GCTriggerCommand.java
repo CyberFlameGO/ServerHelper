@@ -24,8 +24,8 @@ public class GCTriggerCommand implements ICommand
         getScheduler().runTaskAsynchronously(getInstance(), System :: gc);
         // Components are the super confusing new way of sending messages.
         // I'm using Kyori Adventure components because they seem more modern, among other reasons
-        // TODO: Make this work off of the debug toggle functionality, or potentially change to a permission-based
-        //  debug toggle
+
+        // Anyone who can execute the command can see its output
         broadcast(Utils.component(message), permission);
     }
 }

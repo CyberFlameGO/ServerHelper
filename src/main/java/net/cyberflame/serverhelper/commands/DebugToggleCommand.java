@@ -12,9 +12,7 @@ import static net.cyberflame.serverhelper.Main.getInstance;
 public class DebugToggleCommand implements ICommand
 {
 	private final Main instance = Main.getInstance();
-// TODO: Fix toggling debug alerts for someone else, also toggling them for yourself. (/dat Owner_of_Mojang
-// toggles my username's toggle status twice, and with another person e.g. Glacioo it toggles both mine and
-// Glacioo's simultaneously).
+
 	@Override
 	public void execute(Player player, String[] args)
 	{
@@ -44,7 +42,7 @@ public class DebugToggleCommand implements ICommand
 								target.getUniqueId()) ? Objects.requireNonNull(alertsOtherToggleOn)
 						                                       .replaceAll("%player%", targetName) : Objects
 								.requireNonNull(alertsOtherToggleOff).replaceAll("%player%", targetName))));
-						player.sendMessage(ChatColor.translateAlternateColorCodes('&', (instance.getReceivingDebug(
+						target.sendMessage(ChatColor.translateAlternateColorCodes('&', (instance.getReceivingDebug(
 								target.getUniqueId()) ? Objects.requireNonNull(alertsToggleOn)
 						                                       .replaceAll("%player%", targetName) : Objects
 								.requireNonNull(alertsToggleOff).replaceAll("%player%", targetName))));

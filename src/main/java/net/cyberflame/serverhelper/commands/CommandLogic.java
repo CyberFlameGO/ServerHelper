@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+// Potentially I could also set up proper tab-complete handling
 public class CommandLogic implements CommandExecutor
 {
 
@@ -20,7 +21,7 @@ public class CommandLogic implements CommandExecutor
 		commands = new HashMap<>();
 		registerCommand(new GCTriggerCommand(), "triggergc", "garbagecollect", "gc");
 		registerCommand(new DebugToggleCommand(), "toggledebug", "debugalerts", "debugnotifications",
-		                "debugalertstoggle", "dat");
+		                "debugalertstoggle", "dat", "notify", "alerts", "notifications");
 	}
 
 	private void registerCommand(ICommand iCommand, String... aliases) {
