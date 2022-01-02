@@ -24,14 +24,17 @@ public class LogCommand implements CommandExecutor
 					if (args.length == 0)
 						{
 							ServerHelperPlugin.getInstance().getLogger().info(message);
-							sender.sendMessage("§aLogged: §f" + message);
+							sender.sendMessage("Tip: You can use config, fine, finer, finest, info, warning, and " +
+							                   "severe logging levels. Syntax: /log [level] [message]\n" +
+							                   "§aLogged: §f" + message);
 							return true;
 						}
 
 					String level;
 
 					level = args[0].strip().toUpperCase();
-					if (! Arrays.asList(new String[] {"INFO", "WARN", "ERROR", "SEVERE"}).contains(level))
+					if (! Arrays.asList(new String[] {"CONFIG", "FINE", "FINER", "FINEST", "INFO", "WARNING",
+							"SEVERE"}).contains(level))
 						{
 							sender.sendMessage("Level \"" + level + "\" is invalid, falling back to info");
 							level = "INFO";
@@ -53,7 +56,7 @@ public class LogCommand implements CommandExecutor
 							case "FINEST" -> ServerHelperPlugin.getInstance().getLogger().finest(message);
 							case "INFO" -> ServerHelperPlugin.getInstance().getLogger().info(message);
 							case "WARN" -> ServerHelperPlugin.getInstance().getLogger().warning(message);
-							case "ERROR", "SEVERE" -> ServerHelperPlugin.getInstance().getLogger().severe(message);
+							case "SEVERE" -> ServerHelperPlugin.getInstance().getLogger().severe(message);
 						}
 					sender.sendMessage("§aLogged with level " + level + ": §f" + message);
 					return true;
