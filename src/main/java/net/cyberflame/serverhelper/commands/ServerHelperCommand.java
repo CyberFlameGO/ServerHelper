@@ -1,12 +1,12 @@
 package net.cyberflame.serverhelper.commands;
 
-import net.cyberflame.serverhelper.Main;
+import net.cyberflame.serverhelper.ServerHelperPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
-public class RootCommand implements CommandExecutor
+public class ServerHelperCommand implements CommandExecutor
 {
 	final String permission = "serverhelper.reload";
 
@@ -28,11 +28,11 @@ public class RootCommand implements CommandExecutor
 								                   "§3Subcommands: §6reload §7- §2Reloads the plugin configuration.");
 							}
 					}
-				else if (args.length >= 1)
+				else
 					{
 						if (args[0].equals("reload") && sender.hasPermission(permission))
 							{
-								Main.getInstance().reloadConfig();
+								ServerHelperPlugin.getInstance().reloadConfig();
 								sender.sendMessage("§ePlugin configuration has been §2reloaded§c!");
 							}
 						else

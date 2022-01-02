@@ -1,5 +1,7 @@
 package net.cyberflame.serverhelper.commands;
 
+import net.cyberflame.serverhelper.commands.debug.DebugToggleCommand;
+import net.cyberflame.serverhelper.commands.debug.GCTriggerCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

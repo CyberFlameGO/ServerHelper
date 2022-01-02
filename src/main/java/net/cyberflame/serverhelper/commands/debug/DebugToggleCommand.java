@@ -1,18 +1,17 @@
-package net.cyberflame.serverhelper.commands;
+package net.cyberflame.serverhelper.commands.debug;
 
-import net.cyberflame.serverhelper.Main;
+import net.cyberflame.serverhelper.ServerHelperPlugin;
+import net.cyberflame.serverhelper.commands.ICommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
-import static net.cyberflame.serverhelper.Main.getInstance;
+import static net.cyberflame.serverhelper.ServerHelperPlugin.getInstance;
 
 public class DebugToggleCommand implements ICommand
 {
-	private final Main instance = Main.getInstance();
-
 	@Override
 	public void execute(Player player, String[] args)
 	{
@@ -32,17 +31,19 @@ public class DebugToggleCommand implements ICommand
 					{
 						Player target = Bukkit.getPlayer(args[0]);
 						String targetName = Objects.requireNonNull(Bukkit.getPlayer(args[0])).getName();
-						instance.setReceivingDebug(Objects.requireNonNull(Bukkit.getPlayer(args[0])).getUniqueId());
+						ServerHelperPlugin.toggleReceivingDebug(Objects.requireNonNull(Bukkit.getPlayer(args[0])).getUniqueId());
 						String alertsOtherToggleOn =
 								getInstance().getConfig().getString("messages.alerts_toggle_on_other");
 						String alertsOtherToggleOff =
 								getInstance().getConfig().getString("messages.alerts_toggle_off_other");
 						assert target != null;
-						player.sendMessage(ChatColor.translateAlternateColorCodes('&', (instance.getReceivingDebug(
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&', (
+								ServerHelperPlugin.isReceivingDebug(
 								target.getUniqueId()) ? Objects.requireNonNull(alertsOtherToggleOn)
 						                                       .replaceAll("%player%", targetName) : Objects
 								.requireNonNull(alertsOtherToggleOff).replaceAll("%player%", targetName))));
-						target.sendMessage(ChatColor.translateAlternateColorCodes('&', (instance.getReceivingDebug(
+						target.sendMessage(ChatColor.translateAlternateColorCodes('&', (
+								ServerHelperPlugin.isReceivingDebug(
 								target.getUniqueId()) ? Objects.requireNonNull(alertsToggleOn)
 						                                       .replaceAll("%player%", targetName) : Objects
 								.requireNonNull(alertsToggleOff).replaceAll("%player%", targetName))));
@@ -58,9 +59,9 @@ public class DebugToggleCommand implements ICommand
 					}
 				return;
 			}
-		instance.setReceivingDebug(player.getUniqueId());
+		ServerHelperPlugin.toggleReceivingDebug(player.getUniqueId());
 		player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-		                                                          (instance.getReceivingDebug(player.getUniqueId()) ?
+		                                                          (ServerHelperPlugin.isReceivingDebug(player.getUniqueId()) ?
 				                                                           Objects.requireNonNull(alertsToggleOn)
 				                                                                  .replaceAll("%player%",
 				                                                                              player.getName()) :

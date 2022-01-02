@@ -1,5 +1,5 @@
 name: ServerHelper
-main: net.cyberflame.serverhelper.Main
+main: net.cyberflame.serverhelper.ServerHelperPlugin
 version: ${project.version}
 description: Utilities for the NCEA Help Minecraft server
 website: https://cyberfla.me/
@@ -19,6 +19,12 @@ commands:
     aliases: [sh]
     description: "Prints plugin information, and is the root command for subcommands"
     permission: serverhelper.main
+  log:
+    aliases: [logoutputgenerator]
+    description: Generate a log message
+    usage: /log [level] [message]
+    permission: serverhelper.log
+
 
 permissions:
   serverhelper.gc:
@@ -32,4 +38,7 @@ permissions:
     default: true
   serverhelper.reload:
     description: "Allows the user to run the reload subcommand"
+    default: op
+  serverhelper.log:
+    description: "Allows the user to run the log output generator"
     default: op

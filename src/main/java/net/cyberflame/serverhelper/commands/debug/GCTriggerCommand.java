@@ -1,10 +1,11 @@
-package net.cyberflame.serverhelper.commands;
+package net.cyberflame.serverhelper.commands.debug;
 
+import net.cyberflame.serverhelper.commands.ICommand;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import net.cyberflame.serverhelper.commons.utils.Utils;
-import static net.cyberflame.serverhelper.Main.*;
+import static net.cyberflame.serverhelper.ServerHelperPlugin.*;
 import static org.bukkit.Bukkit.*;
 
 public class GCTriggerCommand implements ICommand
