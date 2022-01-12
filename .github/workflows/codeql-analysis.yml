@@ -42,7 +42,7 @@ jobs:
       
     - uses: actions/setup-java@v2
       with:
-        distribution: 'adopt-openj9' # See 'Supported distributions' for available options
+        distribution: 'microsoft' # See 'Supported distributions' for available options
         java-version: '17'
         cache: 'maven'
 
