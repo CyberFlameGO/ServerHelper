@@ -12,7 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 
-public class UnloadListener implements Listener
+public class ChunkUnloadListener implements Listener
 {
 	@EventHandler
 	public void onChunkUnload(ChunkUnloadEvent event)
@@ -77,4 +77,3 @@ public class UnloadListener implements Listener
 		}
 	}
 }
-Terms
