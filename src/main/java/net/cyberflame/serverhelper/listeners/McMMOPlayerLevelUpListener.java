@@ -12,10 +12,12 @@ public class McMMOPlayerLevelUpListener implements Listener
 	public void onMcMMOPlayerLevelUp(McMMOPlayerLevelUpEvent event)
 	{
 		Player player = event.getPlayer();
-		int accruedClaimBlocks = GriefPrevention.instance.dataStore.getPlayerData(player.getUniqueId()).getAccruedClaimBlocks();
+		int bonusClaimBlocks =
+				GriefPrevention.instance.dataStore.getPlayerData(player.getUniqueId()).getBonusClaimBlocks();
 		int skillLevel = event.getSkillLevel();
-		if ((skillLevel % 50 == 0) && (accruedClaimBlocks < 20000))
-			GriefPrevention.instance.dataStore.adjustGroupBonusBlocks(String.valueOf(player.getUniqueId()), 20000 - accruedClaimBlocks);
+		if ((skillLevel % 50 == 0) && (bonusClaimBlocks < 20000))
+			GriefPrevention.instance.dataStore.adjustGroupBonusBlocks(String.valueOf(player.getUniqueId()),
+			                                                          bonusClaimBlocks + 100);
 
 	}
 }
