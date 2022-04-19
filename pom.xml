@@ -13,6 +13,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.release>17</maven.compiler.release>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -20,6 +21,14 @@
         <repository>
             <id>purpur</id>
             <url>https://repo.purpurmc.org/snapshots</url>
+        </repository>
+        <repository>
+            <id>neetgames</id>
+            <url>https://nexus.neetgames.com/repository/maven-releases/</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
 
@@ -40,6 +49,18 @@
             <artifactId>annotations</artifactId>
             <version>23.0.0</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gmail.nossr50.mcMMO</groupId>
+            <artifactId>mcMMO</artifactId>
+            <version>2.1.211</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.TechFortress</groupId>
+            <artifactId>GriefPrevention</artifactId>
+            <version>16.18</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

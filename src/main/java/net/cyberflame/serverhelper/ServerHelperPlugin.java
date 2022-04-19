@@ -3,10 +3,7 @@ package net.cyberflame.serverhelper;
 import net.cyberflame.serverhelper.commands.CommandLogic;
 import net.cyberflame.serverhelper.commands.ServerHelperCommand;
 import net.cyberflame.serverhelper.commands.debug.LogCommand;
-import net.cyberflame.serverhelper.listeners.ChunkUnloadListener;
-import net.cyberflame.serverhelper.listeners.InventoryCreativeListener;
-import net.cyberflame.serverhelper.listeners.PlayerQuitListener;
-import net.cyberflame.serverhelper.listeners.RemoteServerCommandListener;
+import net.cyberflame.serverhelper.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.PluginManager;
@@ -53,6 +50,7 @@ public class ServerHelperPlugin extends JavaPlugin
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new ChunkUnloadListener(), this);
         pm.registerEvents(new InventoryCreativeListener(), this);
+        pm.registerEvents(new McMMOPlayerLevelUpListener(), this);
         pm.registerEvents(new PlayerQuitListener(), this);
         pm.registerEvents(new RemoteServerCommandListener(), this);
     }
