@@ -5,6 +5,7 @@ import net.cyberflame.serverhelper.commands.ICommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ import static net.cyberflame.serverhelper.ServerHelperPlugin.getInstance;
 public class DebugToggleCommand implements ICommand
 {
 	@Override
-	public void execute(Player player, String[] args)
+	public void execute(@NotNull Player player, String[] args)
 	{
 		final String permission = "serverhelper.debug";
 		String alertsToggleOn = getInstance().getConfig().getString("messages.alerts_toggle_on");
