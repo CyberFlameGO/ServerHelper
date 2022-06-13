@@ -1,0 +1,26 @@
+name: Qodana
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'releases/*'
+
+permissions:
+  contents: read
+  
+jobs:
+  qodana:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@cdea734fa57747b9831aa9d6fcb274c5f9669557
+        with:
+          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+      - name: 'Qodana Scan'
+        uses: JetBrains/qodana-action@4ea5e96ccb42bee5378ec0b11ca8e759426edd7e
+        with:
+          linter: jetbrains/qodana-java
