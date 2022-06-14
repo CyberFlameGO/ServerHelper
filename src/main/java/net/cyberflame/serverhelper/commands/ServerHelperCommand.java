@@ -12,7 +12,7 @@ public class ServerHelperCommand implements CommandExecutor
 
 	// TODO: Create a debug "toolchain" which includes config reloading and GC, not limited to players (while
 	//  retaining the current command structure as the primary structure). Ideally a root command with subcommands.
-
+	@Override
 	public boolean onCommand(CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args)
 	{
 		if (sender.hasPermission("serverhelper.main"))
