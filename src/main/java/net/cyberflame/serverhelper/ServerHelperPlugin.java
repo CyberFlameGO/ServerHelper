@@ -48,7 +48,7 @@ public class ServerHelperPlugin extends JavaPlugin
     private void registerListeners()
     {
         PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new ChunkUnloadListener(), this);
+        pm.registerEvents(new PetTeleportationFunctionalityListener(), this);
         pm.registerEvents(new InventoryCreativeListener(), this);
         pm.registerEvents(new McMMOPlayerLevelUpListener(), this);
         pm.registerEvents(new PlayerQuitListener(), this);
