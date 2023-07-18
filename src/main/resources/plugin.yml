@@ -4,7 +4,7 @@ version: ${project.version}
 description: Utilities for the NCEA Help Minecraft server
 website: https://cyberfla.me/
 author: CyberFlame (Aaron)
-api-version: 1.19
+api-version: 1.20
 load: STARTUP
 commands:
   triggergc:

@@ -48,7 +48,7 @@ public class ServerHelperPlugin extends JavaPlugin
     private void registerListeners()
     {
         PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new ChunkUnloadListener(), this);
+        pm.registerEvents(new PetTeleportationFunctionalityListener(), this);
         pm.registerEvents(new InventoryCreativeListener(), this);
         pm.registerEvents(new McMMOPlayerLevelUpListener(), this);
         pm.registerEvents(new PlayerQuitListener(), this);
@@ -67,7 +67,8 @@ public class ServerHelperPlugin extends JavaPlugin
     }
 
     @SuppressWarnings("unused")
-    public static Set<UUID> getReceivingDebug() {
+    public static Set<UUID> getReceivingDebug() 
+    {
         return RECEIVING_DEBUG;
     }
 
