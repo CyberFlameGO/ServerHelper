@@ -1,60 +1,52 @@
 package net.cyberflame.serverhelper;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 import net.cyberflame.serverhelper.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+public class ServerHelperPlugin extends JavaPlugin {
+  private static Set<UUID> RECEIVING_DEBUG;
+  private static ServerHelperPlugin INSTANCE;
 
-public class ServerHelperPlugin extends JavaPlugin
-{
-    private static Set<UUID> RECEIVING_DEBUG;
-    private static ServerHelperPlugin INSTANCE;
+  @Override
+  public void onEnable() {
+    this.saveDefaultConfig();
+    getConfig().options().copyDefaults(true);
+    saveConfig();
+    ServerHelperPlugin.INSTANCE = this;
+    RECEIVING_DEBUG = new HashSet<>();
+    registerListeners();
+  }
 
-    @Override
-    public void onEnable()
-    {
-        this.saveDefaultConfig();
-        getConfig().options().copyDefaults(true);
-        saveConfig();
-        ServerHelperPlugin.INSTANCE = this;
-        RECEIVING_DEBUG             = new HashSet<>();
-        registerListeners();
-    }
+  private void registerListeners() {
+    PluginManager pm = Bukkit.getPluginManager();
+    pm.registerEvents(new PetTeleportationFunctionalityListener(), this);
+    pm.registerEvents(new InventoryCreativeListener(), this);
+    //        pm.registerEvents(new McMMOPlayerLevelUpListener(), this);
+    pm.registerEvents(new PlayerQuitListener(), this);
+    pm.registerEvents(new RemoteServerCommandListener(), this);
+  }
 
-    private void registerListeners()
-    {
-        PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new PetTeleportationFunctionalityListener(), this);
-        pm.registerEvents(new InventoryCreativeListener(), this);
-//        pm.registerEvents(new McMMOPlayerLevelUpListener(), this);
-        pm.registerEvents(new PlayerQuitListener(), this);
-        pm.registerEvents(new RemoteServerCommandListener(), this);
-    }
+  @SuppressWarnings("FinalStaticMethod")
+  public static final ServerHelperPlugin getInstance() {
+    return ServerHelperPlugin.INSTANCE;
+  }
 
-    @SuppressWarnings("FinalStaticMethod")
-    public static final ServerHelperPlugin getInstance()
-    {
-        return ServerHelperPlugin.INSTANCE;
-    }
+  public static boolean isReceivingDebug(UUID uuid) {
+    return RECEIVING_DEBUG.contains(uuid);
+  }
 
-    public static boolean isReceivingDebug(UUID uuid)
-    {
-        return RECEIVING_DEBUG.contains(uuid);
-    }
+  @SuppressWarnings("unused")
+  public static Set<UUID> getReceivingDebug() {
+    return RECEIVING_DEBUG;
+  }
 
-    @SuppressWarnings("unused")
-    public static Set<UUID> getReceivingDebug() 
-    {
-        return RECEIVING_DEBUG;
-    }
-
-    public static void toggleReceivingDebug(UUID uuid)
-    {
-        if (isReceivingDebug(uuid)) RECEIVING_DEBUG.remove(uuid);
-        else RECEIVING_DEBUG.add(uuid);
-    }
+  public static void toggleReceivingDebug(UUID uuid) {
+    if (isReceivingDebug(uuid)) RECEIVING_DEBUG.remove(uuid);
+    else RECEIVING_DEBUG.add(uuid);
+  }
 }
