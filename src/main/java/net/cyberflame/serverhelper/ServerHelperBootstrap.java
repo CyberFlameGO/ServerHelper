@@ -8,14 +8,11 @@ import org.jetbrains.annotations.NotNull;
 
 public class ServerHelperBootstrap implements PluginBootstrap {
 
-    @Override
-    public void bootstrap(@NotNull BootstrapContext context) {
+  @Override
+  public void bootstrap(@NotNull BootstrapContext context) {}
 
-    }
-
-    @Override
-    public @NotNull JavaPlugin createPlugin(@NotNull PluginProviderContext context) {
-        return new ServerHelperPlugin();
-    }
-
+  @Override
+  public @NotNull JavaPlugin createPlugin(@NotNull PluginProviderContext context) {
+    return new ServerHelperPlugin();
+  }
 }
