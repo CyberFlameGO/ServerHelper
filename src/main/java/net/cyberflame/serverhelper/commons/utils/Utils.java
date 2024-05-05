@@ -3,7 +3,12 @@ package net.cyberflame.serverhelper.commons.utils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
+
+import java.util.Objects;
 
 import static net.kyori.adventure.text.Component.text;
 
@@ -25,5 +30,14 @@ public class Utils
 	public static void sendMessage(CommandSender sender, String message)
 	{
 		sender.sendMessage(toMinecraftChatColor(message));
+	}
+
+	public static boolean isPet(EntityType compare)
+	{
+		return compare == EntityType.WOLF || compare == EntityType.CAT || compare == EntityType.PARROT;
+	}
+
+	public static Location getPlayerSpawn(Player p) {
+		return Objects.requireNonNullElse(p.getRespawnLocation(), p.getWorld().getSpawnLocation());
 	}
 }

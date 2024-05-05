@@ -13,9 +13,9 @@ public class ServerHelperBootstrap implements PluginBootstrap {
 
     }
 
-//    @Override
-//    public @NotNull JavaPlugin createPlugin(@NotNull PluginProviderContext context) {
-//        return new ServerHelperPlugin();
-//    }
+    @Override
+    public @NotNull JavaPlugin createPlugin(@NotNull PluginProviderContext context) {
+        return new ServerHelperPlugin();
+    }
 
 }
