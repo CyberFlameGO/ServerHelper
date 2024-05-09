@@ -2,26 +2,24 @@ package net.cyberflame.serverhelper;
 
 import net.cyberflame.serverhelper.listeners.*;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 public class ServerHelperPlugin extends JavaPlugin
 {
-    private static Set<UUID> RECEIVING_DEBUG;
+//    private static Set<UUID> RECEIVING_DEBUG;
     private static ServerHelperPlugin INSTANCE;
+    private static HashMap<UUID, HashSet<Entity>> deferredPets = new HashMap<>();
 
     @Override
     public void onEnable()
     {
-        this.saveDefaultConfig();
-        getConfig().options().copyDefaults(true);
-        saveConfig();
         ServerHelperPlugin.INSTANCE = this;
-        RECEIVING_DEBUG             = new HashSet<>();
         registerListeners();
     }
 
@@ -29,10 +27,6 @@ public class ServerHelperPlugin extends JavaPlugin
     {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PetTeleportationFunctionalityListener(), this);
-        pm.registerEvents(new InventoryCreativeListener(), this);
-//        pm.registerEvents(new McMMOPlayerLevelUpListener(), this);
-        pm.registerEvents(new PlayerQuitListener(), this);
-        pm.registerEvents(new RemoteServerCommandListener(), this);
     }
 
     @SuppressWarnings("FinalStaticMethod")
@@ -41,20 +35,18 @@ public class ServerHelperPlugin extends JavaPlugin
         return ServerHelperPlugin.INSTANCE;
     }
 
-    public static boolean isReceivingDebug(UUID uuid)
-    {
-        return RECEIVING_DEBUG.contains(uuid);
+    public static HashMap<UUID, HashSet<Entity>> getDeferredPets() {
+        return deferredPets;
     }
 
-    @SuppressWarnings("unused")
-    public static Set<UUID> getReceivingDebug() 
-    {
-        return RECEIVING_DEBUG;
-    }
-
-    public static void toggleReceivingDebug(UUID uuid)
-    {
-        if (isReceivingDebug(uuid)) RECEIVING_DEBUG.remove(uuid);
-        else RECEIVING_DEBUG.add(uuid);
+    public static void addDeferredPet(UUID player, Entity pet) {
+        if (deferredPets.containsKey(player)) {
+            deferredPets.get(player).add(pet);
+        }
+        else {
+            HashSet<Entity> pets = new HashSet<>();
+            pets.add(pet);
+            deferredPets.put(player, pets);
+        }
     }
 }
