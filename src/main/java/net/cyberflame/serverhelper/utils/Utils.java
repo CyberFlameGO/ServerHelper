@@ -9,10 +9,12 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sittable;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.UUID;
 
 import static net.cyberflame.serverhelper.ServerHelperPlugin.getDeferredPets;
 import static net.kyori.adventure.text.Component.text;
@@ -37,11 +39,12 @@ public class Utils
 		sender.sendMessage(toMinecraftChatColor(message));
 	}
 
-	public static boolean notPet(EntityType compare)
+	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
+	public static boolean isPet(EntityType compare)
 	{
-		return compare != EntityType.WOLF &&
-				compare != EntityType.CAT &&
-				compare != EntityType.PARROT;
+		return compare == EntityType.WOLF ||
+				compare == EntityType.CAT ||
+				compare == EntityType.PARROT;
 	}
 
 	public static boolean isPetAnchored(Entity entity) {
@@ -57,11 +60,11 @@ public class Utils
 	}
 
 	public static void teleportIfInMap(Player p) {
-		HashMap deferredPets = getDeferredPets();
+		HashMap<UUID, HashSet<Entity>> deferredPets = getDeferredPets();
 		if (deferredPets.containsKey(p.getUniqueId())) {
-			HashSet<Entity> pets = (HashSet<Entity>) deferredPets.get(p.getUniqueId());
+			HashSet<Entity> pets = deferredPets.get(p.getUniqueId());
 			for (Entity pet : pets) {
-				pet.teleport(p);
+				pet.teleport(p.getLocation().add(0, 1, 0), PlayerTeleportEvent.TeleportCause.PLUGIN);
 			}
 			deferredPets.remove(p.getUniqueId());
 		}
