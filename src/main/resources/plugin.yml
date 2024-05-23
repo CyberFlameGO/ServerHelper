@@ -1,44 +1,8 @@
 name: ServerHelper
 main: net.cyberflame.serverhelper.ServerHelperPlugin
 version: ${project.version}
-description: Utilities for the NCEA Help Minecraft server
+description: Various utilities
 website: https://cyberfla.me/
 author: CyberFlame (Aaron)
 api-version: 1.20
 load: STARTUP
-commands:
-  triggergc:
-    aliases: [garbagecollect, gc]
-    description: "Runs the garbage collector"
-    permission: serverhelper.gc
-  toggledebug:
-    aliases: [debugalerts, debugnotifications, debugalertstoggle, dat, notify, alerts, notifications]
-    description: "Toggles debug mode"
-    permission: serverhelper.debug
-  serverhelper:
-    aliases: [sh]
-    description: "Prints plugin information, and is the root command for subcommands"
-    permission: serverhelper.main
-  log:
-    aliases: [logoutputgenerator]
-    description: Generate a log message
-    usage: /log [level] [message]
-    permission: serverhelper.log
-
-
-permissions:
-  serverhelper.gc:
-    description: "Allows the user to run the garbage collector"
-    default: op
-  serverhelper.debug:
-    description: "Allows the user to toggle debug mode"
-    default: op
-  serverhelper.main:
-    description: "Allows the user to run the main command"
-    default: true
-  serverhelper.reload:
-    description: "Allows the user to run the reload subcommand"
-    default: op
-  serverhelper.log:
-    description: "Allows the user to run the log output generator"
-    default: op
