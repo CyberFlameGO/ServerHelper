@@ -21,4 +21,4 @@ jobs:
 
       - uses: actions/checkout@v4
       - name: 'Qodana Scan'
-        uses: JetBrains/qodana-action@8815ca36071ab4b3cc274b1743b6322eabb41a05
+        uses: JetBrains/qodana-action@32840fdb87f8dd110e0a6b09323c7142b667b25d
