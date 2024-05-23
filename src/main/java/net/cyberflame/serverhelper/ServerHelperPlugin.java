@@ -12,7 +12,6 @@ import java.util.UUID;
 
 public class ServerHelperPlugin extends JavaPlugin
 {
-//    private static Set<UUID> RECEIVING_DEBUG;
     private static ServerHelperPlugin INSTANCE;
     private static HashMap<UUID, HashSet<Entity>> deferredPets = new HashMap<>();
 
