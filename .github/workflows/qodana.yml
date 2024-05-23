@@ -9,7 +9,7 @@ on:
 
 permissions:
   contents: read
-  
+
 jobs:
   qodana:
     runs-on: ubuntu-latest
@@ -17,7 +17,7 @@ jobs:
       - name: Harden Runner
         uses: step-security/harden-runner@f086349bfa2bd1361f7909c78558e816508cdc10
         with:
-          egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+          egress-policy: audit
 
       - uses: actions/checkout@v4
       - name: 'Qodana Scan'
