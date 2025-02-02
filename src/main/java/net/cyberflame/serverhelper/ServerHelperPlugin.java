@@ -19,6 +19,7 @@ public class ServerHelperPlugin extends JavaPlugin
     public void onEnable()
     {
         ServerHelperPlugin.INSTANCE = this;
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "cyberflame:main");
         registerListeners();
     }
 
@@ -26,6 +27,7 @@ public class ServerHelperPlugin extends JavaPlugin
     {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PetTeleportationFunctionalityListener(), this);
+        pm.registerEvents(new PlayerJoinListener(), this);
     }
 
     @SuppressWarnings("FinalStaticMethod")
