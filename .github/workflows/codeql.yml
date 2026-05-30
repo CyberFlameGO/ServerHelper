@@ -39,7 +39,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - uses: actions/setup-java@v4
+    - uses: actions/setup-java@v5
       with:
         distribution: 'corretto' # See 'Supported distributions' for available options
         java-version: '21'
